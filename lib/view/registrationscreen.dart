@@ -2,6 +2,7 @@ import 'package:email_auth/email_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'config.dart';
 import 'loginscreen.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
@@ -172,7 +173,7 @@ String verify;
     String otp;
     http
         .post(Uri.parse(
-            "https://fruithub99.000webhostapp.com/fruithub/php/otp_finder.php?email=" +
+            CONFIG.SERVER + "/fruithub/php/otp_finder.php?email=" +
                 _emailController.text))
         .then((response) {
       otp = response.body.toString();
@@ -304,7 +305,7 @@ String verify;
     await pr.show();
     http.post(
         Uri.parse(
-            "https://fruithub99.000webhostapp.com/fruithub/php/register_user.php"),
+            CONFIG.SERVER + "/fruithub/php/register_user.php"),
         body: {
           "name": name,
           "email": email,
@@ -432,10 +433,10 @@ String verify;
         EmailAuth.validate(receiverMail: _emailController.text, userOTP: _otpController.text);
     if (res) {
       print("Verified");
-      verify = "https://fruithub99.000webhostapp.com/fruithub/php/verify_account.php?email=" + _emailController.text;
+      verify = CONFIG.SERVER + "/fruithub/php/verify_account.php?email=" + _emailController.text;
       http
         .post(Uri.parse(
-            "https://fruithub99.000webhostapp.com/fruithub/php/verify_account.php?email=" +
+            CONFIG.SERVER + "/fruithub/php/verify_account.php?email=" +
                 _emailController.text))
         .then((response) {
       

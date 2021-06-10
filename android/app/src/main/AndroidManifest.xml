@@ -1,8 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.stiw2044a202.fruit_hub">
+        <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+        <uses-permission android:name="android.permission.INTERNET" />
    <application
+        android:usesCleartextTraffic="true"
         android:label="fruit_hub"
         android:icon="@mipmap/ic_launcher">
+
+        <activity             
+    android:name="com.yalantis.ucrop.UCropActivity"             
+    android:screenOrientation="portrait"             
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+    
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

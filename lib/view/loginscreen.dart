@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fruit_hub/view/mainscreen.dart';
+import 'package:fruit_hub/view/productlist.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fruit_hub/model/user.dart';
+import 'config.dart';
 import 'registrationscreen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -145,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
           type: ProgressDialogType.Normal, isDismissible: true, showLogs: true);
       await pr.show();
       http.post(
-          Uri.parse("https://fruithub99.000webhostapp.com/fruithub/php/login_user.php"),
+         Uri.parse(CONFIG.SERVER + "/fruithub/php/login_user.php"),
           body: {"email": _email, "password": _password}).then((response) {
         print(response.body);
         if (response.body == "failed") {
@@ -181,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
           });
 
           Navigator.push(context,
-            MaterialPageRoute(builder: (content) => MainScreen()));
+            MaterialPageRoute(builder: (content) => ProductListScreen()));
         }
       });
     }
@@ -342,7 +343,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _resetPassword(String emailreset) {
     http.post(
-        Uri.parse("https://slumberjer.com/touringholic/php/insert_gram.php"),
+        Uri.parse(""), //reset password
         body: {"email": emailreset}).then((response) {
       print(response.body);
       if (response.body == "success") {
