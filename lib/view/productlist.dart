@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
+//import 'package:fruit_hub/view/cart.dart';
 import 'package:fruit_hub/view/searchscreen.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
@@ -51,13 +52,18 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Fruit Hub"), backgroundColor: Colors.green[300],
+        title: Text("Fruit Hub"), backgroundColor: Colors.orange,
         actions: [
           IconButton(
             icon: Icon(Icons.search_rounded), onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (content)=>SearchScreen()));
+            }),
+            IconButton(
+            icon: Icon(Icons.shopping_cart), onPressed: (){
+            //  Navigator.push(context, MaterialPageRoute(builder: (content)=>CartScreen()));
             })
         ],
+        
       ),
       body: Center(
         child: Column(

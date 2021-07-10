@@ -1,3 +1,3 @@
 class CONFIG {
-  static final String SERVER = "http://192.168.56.1";
+  static final String SERVER = "http://fruithub1.000webhostapp.com";
 }
